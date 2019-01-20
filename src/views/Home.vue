@@ -17,12 +17,12 @@ export default {
   },
   methods:{
     deleteTodo(id){
-      axios.delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
+      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
         .then(res => this.todos = this.todos.filter(todo => todo.id != id))
     },
     addTodo(newTodo){
       const { title, completed } = newTodo;
-      axios.post('http://jsonplaceholder.typicode.com/todos',{
+      axios.post('https://jsonplaceholder.typicode.com/todos',{
         title, completed
       })
         .then(res => this.todos = [...this.todos, res.data])
@@ -30,9 +30,9 @@ export default {
     }
   },
   created(){
-    axios.get('http://jsonplaceholder.typicode.com/todos?_limit=5')
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
       .then(res => this.todos = res.data)
-      .catch(console.log(err));
+      .catch(err => console.log(err));      
   },
   data(){
     return {
